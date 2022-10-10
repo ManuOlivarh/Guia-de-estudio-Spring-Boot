@@ -81,6 +81,7 @@ Eso se puede usar para que su aplicación pueda tener Rest Endpoints escritos en
 La inversión de control es un principio de programación que significa ceder el control de un objeto a otro objeto que sabe cómo manejarlo. Este principio se utiliza en algunos marcos, como Spring.
 
 Es un patrón de diseño que rompe las dependencias entre objetos y en su lugar depende de abstracciones. La inversión de control se puede lograr a través de la inyección de dependencia, una técnica para separar los componentes de software de las preocupaciones o responsabilidades.
+[Fuente](https://medium.com/@nirmalkumar8273/inversion-of-control-and-dependency-injection-in-spring-framework-e8e40b9afd8d)
 
 ## Inyección de dependencia
 La inyección de dependencia es un subtipo de inversión de control y se implementa mediante inyección de constructor, inyección de setter o inyección de método y se ocupa de cómo los componentes obtienen sus dependencias.
@@ -88,12 +89,16 @@ La inyección de dependencia es un subtipo de inversión de control y se impleme
 Es un proceso en el que los objetos definen sus dependencias a través de argumentos de constructor, argumentos de un método de fábrica o propiedades que se establecen en la instancia del objeto después de que se construye o se devuelve desde un método de fábrica. Luego, el contenedor inyecta esas dependencias cuando crea el bean. Este proceso es fundamentalmente el inverso del propio bean que controla la creación de instancias o la ubicación de sus dependencias por sí mismo mediante la construcción directa de clases o el patrón de Localizador de servicios . de ahí el nombre Inversión de Control.
 
 La inversión de control es un principio por el cual el control de los objetos se transfiere a un contenedor o marco. La inyección de dependencia es un patrón a través del cual se implementa IoC y el acto de conectar objetos con otros objetos o inyectar objetos en objetos lo realiza el contenedor en lugar del objeto en sí.
+[Fuente](https://medium.com/@nirmalkumar8273/inversion-of-control-and-dependency-injection-in-spring-framework-e8e40b9afd8d)
 
 ## En Spring Framework hay dos tipos de inyección de dependencia: -
 
 **Inyección de constructor:** esto se logra cuando el contenedor invoca un constructor con una serie de argumentos, cada uno de los cuales representa una dependencia, es decir, todas las dependencias se declaran en un solo paso. Esto ayuda a comprender si la clase depende de demasiados servicios. La inyección de constructor es la mejor práctica para inyectar dependencias.
+[Fuente](https://medium.com/@nirmalkumar8273/inversion-of-control-and-dependency-injection-in-spring-framework-e8e40b9afd8d)
+
 
 **Inyección Setter:** esto se logra mediante el contenedor que llama a los métodos setter en sus beans después de invocar un constructor sin argumentos o un método de fábrica estático sin argumentos para crear una instancia de su bean. El contenedor llamará a los métodos setter de nuestra clase. Los objetos de la clase tendrán setters. El contenedor IoC utilizará estos configuradores para proporcionar el recurso en tiempo de ejecución. Se utiliza para dependencias opcionales.
+[Fuente](https://medium.com/@nirmalkumar8273/inversion-of-control-and-dependency-injection-in-spring-framework-e8e40b9afd8d)
 
 ## ¿Por qué necesitamos inyección de dependencia?
 La inyección de dependencia proporciona los objetos que necesita un objeto. Entonces, en lugar de que las dependencias se construyan por sí mismas, se inyectan por algún medio externo. Por ejemplo, tenemos una clase llamada "Cliente" que usa una clase "Registrador" para registrar errores. Entonces, en lugar de crear el "Registrador" desde dentro de la clase, podemos inyectar el mismo a través de un constructor como se muestra a continuación.
