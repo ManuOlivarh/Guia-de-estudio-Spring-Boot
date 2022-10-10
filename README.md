@@ -84,15 +84,12 @@ Es un patrón de diseño que rompe las dependencias entre objetos y en su lugar 
 [Fuente](https://medium.com/@nirmalkumar8273/inversion-of-control-and-dependency-injection-in-spring-framework-e8e40b9afd8d)
 
 
-En los siguientes videos se explica de forma mas detallada el concepto:
+En los siguiente video se explica de forma mas detallada el concepto:
 
 **Video 1:**
 
 [![Alt text](https://img.youtube.com/vi/dAAB2EqMiC4/0.jpg)](https://www.youtube.com/watch?v=dAAB2EqMiC4)
 
-**Video 2:**
-
-[![Alt text](https://img.youtube.com/vi/MdIlvJDCsk8/0.jpg)](https://www.youtube.com/watch?v=MdIlvJDCsk8)
 
 ## Inyección de dependencia
 La inyección de dependencia es un subtipo de inversión de control y se implementa mediante inyección de constructor, inyección de setter o inyección de método y se ocupa de cómo los componentes obtienen sus dependencias.
@@ -101,6 +98,9 @@ Es un proceso en el que los objetos definen sus dependencias a través de argume
 
 La inversión de control es un principio por el cual el control de los objetos se transfiere a un contenedor o marco. La inyección de dependencia es un patrón a través del cual se implementa IoC y el acto de conectar objetos con otros objetos o inyectar objetos en objetos lo realiza el contenedor en lugar del objeto en sí.
 [Fuente](https://medium.com/@nirmalkumar8273/inversion-of-control-and-dependency-injection-in-spring-framework-e8e40b9afd8d)
+
+[![Alt text](https://img.youtube.com/vi/gGkeH38XMLk/0.jpg)](https://www.youtube.com/watch?v=gGkeH38XMLk)
+
 
 ## En Spring Framework hay dos tipos de inyección de dependencia: -
 
