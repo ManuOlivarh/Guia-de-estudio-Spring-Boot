@@ -15,3 +15,5 @@ Autoconfiguración
 Un enfoque obstinado de la configuración
 La capacidad de crear aplicaciones independientes
 Estas características funcionan juntas para brindarle una herramienta que le permite configurar una aplicación basada en Spring con una configuración y configuración mínimas.
+
+[Fuente](https://www.ibm.com/cloud/learn/java-spring-boot)
