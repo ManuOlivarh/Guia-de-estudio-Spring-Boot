@@ -49,6 +49,9 @@ Algunos pueden preguntarse cómo Spring Boot tiene configuraciones automáticas 
 @ComponentScan
 ```
 
+![alt text](https://www.arquitecturajava.com/wp-content/uploads/spring-application-herencia.png)
+
+
 @SpringBootApplication es la anotación que aparece en la función main de todo proyecto que definamos con Spring Boot .Ahora bien la mayor parte de los desarrolladores no saben exactamente para que sirve esta anotación y como funciona. Vamos a explicarlo
 
 @SpringBootApplication
@@ -60,8 +63,8 @@ Cuando nosotros usamos la anotación @SpringBootApplication esta anotación here
 
 @ConponentScan : Se encarga de revisar los paquetes actuales y registrar de forma automática cualquier @Servie @Repository @Controller etc que la aplicación tenga de forma totalmente transparente para Spring Framework.
 
-
 Entre cada una de estas anotaciones, Spring Boot puede proporcionar dependencias de proyectos predeterminadas y permitir que se sobrescriban los valores predeterminados.
+[Fuente](https://www.arquitecturajava.com/springbootapplication-una-anotacion-clave/)
 
 
 ## Dependencias de Spring Starter
