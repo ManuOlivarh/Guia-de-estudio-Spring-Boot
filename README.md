@@ -75,3 +75,9 @@ Eso se puede usar para que su aplicación pueda tener Rest Endpoints escritos en
 
 [Fuente](https://www.jrebel.com/blog/what-is-spring-boot)
 
+
+
+## Inversión de control
+La inversión de control es un principio de programación que significa ceder el control de un objeto a otro objeto que sabe cómo manejarlo. Este principio se utiliza en algunos marcos, como Spring.
+
+Es un patrón de diseño que rompe las dependencias entre objetos y en su lugar depende de abstracciones. La inversión de control se puede lograr a través de la inyección de dependencia, una técnica para separar los componentes de software de las preocupaciones o responsabilidades.
