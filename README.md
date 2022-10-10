@@ -55,7 +55,7 @@ Algunos pueden preguntarse cómo Spring Boot tiene configuraciones automáticas 
 @SpringBootApplication es la anotación que aparece en la función main de todo proyecto que definamos con Spring Boot .Ahora bien la mayor parte de los desarrolladores no saben exactamente para que sirve esta anotación y como funciona. Vamos a explicarlo
 
 @SpringBootApplication
-Cuando nosotros usamos la anotación @SpringBootApplication esta anotación herede el comportamiento de un conjunto de anotaciones amplio que tenemos que explicar:
+Cuando nosotros usamos la anotación @SpringBootApplication hacemos que esta anotación herede el comportamiento de un conjunto de anotaciones amplio que tenemos que explicar:
 
 @EnableAutoConfiguration : Esta es una anotación clásica de Spring que se encarga de forma inteligente de intentar configurar Spring de forma automática . Es la anotación encargada de buscar en el Classpath todas las clases con @Entity y registrarlas con el proveedor de persistencia que tengamos. Por lo tanto por eso con Spring Boot es suficiente configurar simplemente el dataSource a nivel application.roperties ya que Spring buscará todos las clases.
 
