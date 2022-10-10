@@ -51,17 +51,17 @@ Algunos pueden preguntarse cómo Spring Boot tiene configuraciones automáticas 
 
 ![alt text](https://www.arquitecturajava.com/wp-content/uploads/spring-application-herencia.png)
 
+[Fuente](https://www.arquitecturajava.com/springbootapplication-una-anotacion-clave/)
 
-**@SpringBootApplication** es la anotación que aparece en la función main de todo proyecto que definamos con Spring Boot .Ahora bien la mayor parte de los desarrolladores no saben exactamente para que sirve esta anotación y como funciona. Vamos a explicarlo. Cuando nosotros usamos la anotación **@SpringBootApplication** hacemos que esta anotación herede el comportamiento de un conjunto de anotaciones amplio que tenemos que explicar:
+**@SpringBootApplication** Es la anotación que aparece en la función main de todo proyecto que definamos con Spring Boot. Ahora bien la mayor parte de los desarrolladores no saben exactamente para que sirve esta anotación y como funciona. Vamos a explicarlo. La anotación @SpringBootApplication es una combinación de las siguientes tres anotaciones de Spring y proporciona la funcionalidad de las tres con solo una línea de código:
+[Fuente](https://dzone.com/articles/the-springbootapplication-annotation-example-in-ja)
 
-**@EnableAutoConfiguration :** Esta es una anotación clásica de Spring que se encarga de forma inteligente de intentar configurar Spring de forma automática . Es la anotación encargada de buscar en el Classpath todas las clases con @Entity y registrarlas con el proveedor de persistencia que tengamos. Por lo tanto por eso con Spring Boot es suficiente configurar simplemente el dataSource a nivel application.roperties ya que Spring buscará todos las clases.
-
-**@SpringConfiguration :** Es la anotación que define que el fichero es un fichero de Configuración de Spring .Normalmente esto se solía hacer antiguamente con @Configuratión . La particularidad que tiene @SpringConfiguration es que solo puede haber una en la aplicación
-
-**@ConponentScan :** Se encarga de revisar los paquetes actuales y registrar de forma automática cualquier @Servie @Repository @Controller etc que la aplicación tenga de forma totalmente transparente para Spring Framework.
+**@Configuration:** Disponible a partir de la versión 3 de Spring, nos ofrece la posibilidad de realizar una notación que será la encargada de definir a la clase que lo posea como una clase de configuración. Esta configuración para el framework de Spring, estará basada en anotaciones. Y no como en sus orígenes, que estaba basada en XML, lo que lo hacía más complejo. La finalidad de dicha anotación también será el permitir realizar la inyección de dependencias.
+**@EnableAutoConfiguration:** La configuración automática de Spring Boot, intenta configurar automáticamente su aplicación Spring en función de las dependencias jar que haya agregado. Si por ejemplo, si HSQLDB (sistema gestor de bases de datos) está en su ruta de clase y no ha configurado manualmente ningún bean de conexión de base de datos, Spring Boot configura automáticamente una base de datos en memoria.
+**@ComponentScan:** Se utiliza junto a @Configuration para indicar a Spring donde debe buscar los componentes y será dentro del package que tenemos anotado. Por solo tener que anotarla una vez, poder hacer que todos los packages sean hijos del package de la clase padre (el que contenga el main).
 
 Entre cada una de estas anotaciones, Spring Boot puede proporcionar dependencias de proyectos predeterminadas y permitir que se sobrescriban los valores predeterminados.
-[Fuente](https://www.arquitecturajava.com/springbootapplication-una-anotacion-clave/)
+[Fuente](https://javadesde0.com/anotacion-springbootapplication/)
 
 
 ## Dependencias de Spring Starter
