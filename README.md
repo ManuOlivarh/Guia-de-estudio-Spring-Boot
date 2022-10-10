@@ -20,10 +20,53 @@ Estas características funcionan juntas para brindarle una herramienta que le pe
 [Fuente](https://www.ibm.com/cloud/learn/java-spring-boot)
 
 
-## ¿Cuál es la ventaja de usar Spring Framework?
-Algunas de las ventajas de usar Spring Framework son:
--	Reducir las dependencias directas entre los diferentes componentes de la aplicación. El contenedor Spring IoC se encarga de inicializar recursos o beans e inyectarlos como dependencias.
--	Escribir casos de prueba de unidad es fácil en el marco Spring porque nuestra lógica comercial no tiene dependencias directas con las clases de implementación de recursos reales. Podemos escribir fácilmente una configuración de prueba e inyectar nuestros beans simulados con fines de prueba.
--	Reduce la cantidad de código repetitivo, como inicializar objetos, abrir/cerrar recursos. Me gusta mucho la clase JdbcTemplate porque nos ayuda a eliminar todo el código estándar que viene con la programación JDBC.
+## ¿Cuál es la ventaja de usar Spring ?
+Algunas de las ventajas de usar Spring  son:
+-	Spring Framework ofrece una función de inyección de dependencias que permite que los objetos definan sus propias dependencias que el contenedor de Spring luego les inyecta. Esto permite a los desarrolladores crear aplicaciones modulares que consisten en componentes débilmente acoplados que son ideales para microservicios y aplicaciones de red distribuidas.
+- 
+-	Reduce la cantidad de código repetitivo, como inicializar objetos, abrir/cerrar recursos. Ejemplo: La clase JdbcTemplate  nos ayuda a eliminar todo el código estándar que viene con la programación JDBC.
 -	Spring Framework se divide en varios módulos, nos ayuda a mantener nuestra aplicación liviana. Por ejemplo, si no necesitamos las funciones de gestión de transacciones de Spring, no necesitamos agregar esa dependencia a nuestro proyecto.
--	Spring Framework es compatible con la mayoría de las características de Java EE e incluso mucho más. Siempre está al tanto de las nuevas tecnologías, por ejemplo, hay un proyecto Spring para Android que nos ayuda a escribir mejor código para aplicaciones nativas de Android. Esto hace que Spring Framework sea un paquete completo y no necesitamos cuidar los diferentes frameworks para diferentes requisitos.
+
+
+
+## Beneficios de las botas de resorte
+Spring Boot tiene una serie de características que lo hacen ideal para el desarrollo rápido de aplicaciones Java, incluida la configuración automática, las comprobaciones de estado y las dependencias obstinadas.
+
+
+| Caracteristica | Beneficio |
+| ------ | ------ |
+| Servidores integrados | Viene con servidores de aplicaciones preconstruidos Tomcat, Jetty y Undertow que no requieren instalación adicional para su uso. Esto también proporciona implementaciones más rápidas y eficientes que dan como resultado tiempos de reinicio más cortos.|
+| Autoconfigurable Drive | Spring y otros frameworks de terceros se configurarán automáticamente. |
+| Funciones similares a las de producción | Health checks, métricas y configuraciones externalizadas.|
+| Dependencias Iniciales | Esto proporcionará dependencias obstinadas diseñadas para simplificar la configuración de compilación. Esto también proporciona una flexibilidad completa de la herramienta de construcción (Maven y Gradle).|
+
+	
+	
+	
+	
+¿Cómo funciona Spring Boot?
+Algunos pueden preguntarse cómo Spring Boot tiene configuraciones automáticas y qué significa eso realmente. Realmente se reduce a tres simples anotaciones de Spring Boot que brindan esta función:
+
+@SpringBootApplication
+@EnableAutoConfiguration
+@ComponentScan
+Entre cada una de estas anotaciones, Spring Boot puede proporcionar dependencias de proyectos predeterminadas y permitir que se sobrescriban los valores predeterminados.
+
+@SpringBootApplication
+@SpringBootApplication se usa en el punto de entrada de la aplicación, agregue la clase en la que reside debe tener el método principal de la aplicación. La anotación es necesaria y proporcionará cada una de las otras dos anotaciones a su aplicación Spring Boot, ya que @SpringBootApplication incluye ambas en su interior.
+
+@EnableAutoConfiguration
+@EnableAutoConfiguration hace solo que proporciona a cada una de las clases representativas la capacidad de configuración automática.
+
+@ComponentScan
+Por último, @ComponentScan en la inicialización escaneará todos los beans y las declaraciones de paquetes.
+
+Dependencias de Spring Starter
+Spring Boot no solo incluye anotaciones, sino que también usa Spring Starter Dependencies para garantizar que su aplicación comience con las dependencias correctas y que pueda comenzar a trabajar, por así decirlo.
+
+Muchas veces, a medida que una aplicación crece, puede ser difícil configurar correctamente las dependencias del proyecto, los complementos de Spring Boot Starter ayudarán a facilitar la gestión de dependencias. Un ejemplo de dependencias Spring Starter es la dependencia web Spring Boot Starter.
+
+Eso se puede usar para que su aplicación pueda tener Rest Endpoints escritos en su aplicación. En general, ayudan a agilizar el desarrollo de estas aplicaciones para que un equipo comience desde un punto más complejo y se presenten menos agujeros, especialmente con aplicaciones más grandes.
+
+[Fuente](https://www.jrebel.com/blog/what-is-spring-boot)
+
