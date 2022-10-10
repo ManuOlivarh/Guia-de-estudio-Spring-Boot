@@ -48,21 +48,21 @@ Algunos pueden preguntarse cómo Spring Boot tiene configuraciones automáticas 
 @EnableAutoConfiguration
 @ComponentScan
 ```
+
+@SpringBootApplication es la anotación que aparece en la función main de todo proyecto que definamos con Spring Boot .Ahora bien la mayor parte de los desarrolladores no saben exactamente para que sirve esta anotación y como funciona. Vamos a explicarlo
+
+@SpringBootApplication
+Cuando nosotros usamos la anotación @SpringBootApplication esta anotación herede el comportamiento de un conjunto de anotaciones amplio que tenemos que explicar:
+
+@EnableAutoConfiguration : Esta es una anotación clásica de Spring que se encarga de forma inteligente de intentar configurar Spring de forma automática . Es la anotación encargada de buscar en el Classpath todas las clases con @Entity y registrarlas con el proveedor de persistencia que tengamos. Por lo tanto por eso con Spring Boot es suficiente configurar simplemente el dataSource a nivel application.roperties ya que Spring buscará todos las clases.
+
+@SpringConfiguration : Es la anotación que define que el fichero es un fichero de Configuración de Spring .Normalmente esto se solía hacer antiguamente con @Configuratión . La particularidad que tiene @SpringConfiguration es que solo puede haber una en la aplicación
+
+@ConponentScan : Se encarga de revisar los paquetes actuales y registrar de forma automática cualquier @Servie @Repository @Controller etc que la aplicación tenga de forma totalmente transparente para Spring Framework.
+
+
 Entre cada una de estas anotaciones, Spring Boot puede proporcionar dependencias de proyectos predeterminadas y permitir que se sobrescriban los valores predeterminados.
 
-```sh
-@SpringBootApplication
-```
-@SpringBootApplication se usa en el punto de entrada de la aplicación, agregue la clase en la que reside debe tener el método principal de la aplicación. La anotación es necesaria y proporcionará cada una de las otras dos anotaciones a su aplicación Spring Boot, ya que @SpringBootApplication incluye ambas en su interior.
-
-```sh
-@EnableAutoConfiguration
-```
-@EnableAutoConfiguration hace solo que proporciona a cada una de las clases representativas la capacidad de configuración automática.
-```sh
-@ComponentScan
-```
-Por último, @ComponentScan en la inicialización escaneará todos los beans y las declaraciones de paquetes.
 
 ## Dependencias de Spring Starter
 Spring Boot no solo incluye anotaciones, sino que también usa Spring Starter Dependencies para garantizar que su aplicación comience con las dependencias correctas y que pueda comenzar a trabajar, por así decirlo.
