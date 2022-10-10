@@ -91,9 +91,11 @@ La inversión de control es un principio por el cual el control de los objetos s
 
 ## En Spring Framework hay dos tipos de inyección de dependencia: -
 
-Inyección de constructor: esto se logra cuando el contenedor invoca un constructor con una serie de argumentos, cada uno de los cuales representa una dependencia, es decir, todas las dependencias se declaran en un solo paso. Esto ayuda a comprender si la clase depende de demasiados servicios. La inyección de constructor es la mejor práctica para inyectar dependencias.
-Inyección Setter: esto se logra mediante el contenedor que llama a los métodos setter en sus beans después de invocar un constructor sin argumentos o un método de fábrica estático sin argumentos para crear una instancia de su bean. El contenedor llamará a los métodos setter de nuestra clase. Los objetos de la clase tendrán setters. El contenedor IoC utilizará estos configuradores para proporcionar el recurso en tiempo de ejecución. Se utiliza para dependencias opcionales.
-¿Por qué necesitamos inyección de dependencia?
+**Inyección de constructor:** esto se logra cuando el contenedor invoca un constructor con una serie de argumentos, cada uno de los cuales representa una dependencia, es decir, todas las dependencias se declaran en un solo paso. Esto ayuda a comprender si la clase depende de demasiados servicios. La inyección de constructor es la mejor práctica para inyectar dependencias.
+
+**Inyección Setter:** esto se logra mediante el contenedor que llama a los métodos setter en sus beans después de invocar un constructor sin argumentos o un método de fábrica estático sin argumentos para crear una instancia de su bean. El contenedor llamará a los métodos setter de nuestra clase. Los objetos de la clase tendrán setters. El contenedor IoC utilizará estos configuradores para proporcionar el recurso en tiempo de ejecución. Se utiliza para dependencias opcionales.
+
+## ¿Por qué necesitamos inyección de dependencia?
 La inyección de dependencia proporciona los objetos que necesita un objeto. Entonces, en lugar de que las dependencias se construyan por sí mismas, se inyectan por algún medio externo. Por ejemplo, tenemos una clase llamada "Cliente" que usa una clase "Registrador" para registrar errores. Entonces, en lugar de crear el "Registrador" desde dentro de la clase, podemos inyectar el mismo a través de un constructor como se muestra a continuación.
 
 El mayor beneficio logrado por este enfoque es el "desacoplamiento". Podemos invocar el objeto del cliente y pasar cualquier tipo de objeto "Registrador".
