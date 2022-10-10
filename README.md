@@ -22,10 +22,10 @@ Estas características funcionan juntas para brindarle una herramienta que le pe
 
 ## ¿Cuál es la ventaja de usar Spring Boot?
 Algunas de las ventajas de usar Spring  son:
--	Spring Framework ofrece una función de inyección de dependencias que permite que los objetos definan sus propias dependencias que el contenedor de Spring luego les inyecta. Esto permite a los desarrolladores crear aplicaciones modulares que consisten en componentes débilmente acoplados que son ideales para microservicios y aplicaciones de red distribuidas.
-- 
+-	Spring Framework ofrece una función de inyección de dependencias que permite que los objetos definan sus propias dependencias que el contenedor de Spring luego les inyecta. Esto permite a los desarrolladores crear aplicaciones modulares que consisten en componentes débilmente acoplados que son ideales para microservicios y aplicaciones de red distribuidas. 
 -	Reduce la cantidad de código repetitivo, como inicializar objetos, abrir/cerrar recursos. Ejemplo: La clase JdbcTemplate  nos ayuda a eliminar todo el código estándar que viene con la programación JDBC.
 -	Spring Framework se divide en varios módulos, nos ayuda a mantener nuestra aplicación liviana. Por ejemplo, si no necesitamos las funciones de gestión de transacciones de Spring, no necesitamos agregar esa dependencia a nuestro proyecto.
+[Fuente](https://www.ibm.com/cloud/learn/java-spring-boot)
 
 
 
@@ -38,7 +38,7 @@ Spring Boot tiene una serie de características que lo hacen ideal para el desar
 | Servidores integrados | Viene con servidores de aplicaciones preconstruidos Tomcat, Jetty y Undertow que no requieren instalación adicional para su uso. Esto también proporciona implementaciones más rápidas y eficientes que dan como resultado tiempos de reinicio más cortos.|
 | Autoconfigurable Drive | Spring y otros frameworks de terceros se configurarán automáticamente. |
 | Funciones similares a las de producción | Health checks, métricas y configuraciones externalizadas.|
-| Dependencias Iniciales | Esto proporcionará dependencias obstinadas diseñadas para simplificar la configuración de compilación. Esto también proporciona una flexibilidad completa de la herramienta de construcción (Maven y Gradle).|	
+| Dependencias Starter | Esto proporcionará dependencias obstinadas diseñadas para simplificar la configuración de compilación. Esto también proporciona una flexibilidad completa de la herramienta de construcción (Maven y Gradle).|	
 	
 ## ¿Cómo funciona Spring Boot?
 Algunos pueden preguntarse cómo Spring Boot tiene configuraciones automáticas y qué significa eso realmente. Realmente se reduce a tres simples anotaciones de Spring Boot que brindan esta función:
@@ -52,17 +52,19 @@ Entre cada una de estas anotaciones, Spring Boot puede proporcionar dependencias
 
 ```sh
 @SpringBootApplication
-@SpringBootApplication se usa en el punto de entrada de la aplicación, agregue la clase en la que reside debe tener el método principal de la aplicación. La anotación es necesaria y proporcionará cada una de las otras dos anotaciones a su aplicación Spring Boot, ya que @SpringBootApplication incluye ambas en su interior.
 ```
+@SpringBootApplication se usa en el punto de entrada de la aplicación, agregue la clase en la que reside debe tener el método principal de la aplicación. La anotación es necesaria y proporcionará cada una de las otras dos anotaciones a su aplicación Spring Boot, ya que @SpringBootApplication incluye ambas en su interior.
+
 ```sh
 @EnableAutoConfiguration
 ```
 @EnableAutoConfiguration hace solo que proporciona a cada una de las clases representativas la capacidad de configuración automática.
-
+```sh
 @ComponentScan
+```
 Por último, @ComponentScan en la inicialización escaneará todos los beans y las declaraciones de paquetes.
 
-Dependencias de Spring Starter
+## Dependencias de Spring Starter
 Spring Boot no solo incluye anotaciones, sino que también usa Spring Starter Dependencies para garantizar que su aplicación comience con las dependencias correctas y que pueda comenzar a trabajar, por así decirlo.
 
 Muchas veces, a medida que una aplicación crece, puede ser difícil configurar correctamente las dependencias del proyecto, los complementos de Spring Boot Starter ayudarán a facilitar la gestión de dependencias. Un ejemplo de dependencias Spring Starter es la dependencia web Spring Boot Starter.
