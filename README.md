@@ -20,7 +20,7 @@ Estas características funcionan juntas para brindarle una herramienta que le pe
 [Fuente](https://www.ibm.com/cloud/learn/java-spring-boot)
 
 
-## ¿Cuál es la ventaja de usar Spring ?
+## ¿Cuál es la ventaja de usar Spring Boot?
 Algunas de las ventajas de usar Spring  son:
 -	Spring Framework ofrece una función de inyección de dependencias que permite que los objetos definan sus propias dependencias que el contenedor de Spring luego les inyecta. Esto permite a los desarrolladores crear aplicaciones modulares que consisten en componentes débilmente acoplados que son ideales para microservicios y aplicaciones de red distribuidas.
 - 
@@ -29,7 +29,7 @@ Algunas de las ventajas de usar Spring  son:
 
 
 
-## Beneficios de las botas de resorte
+## Otros Beneficios de Spring Boot
 Spring Boot tiene una serie de características que lo hacen ideal para el desarrollo rápido de aplicaciones Java, incluida la configuración automática, las comprobaciones de estado y las dependencias obstinadas.
 
 
@@ -38,24 +38,25 @@ Spring Boot tiene una serie de características que lo hacen ideal para el desar
 | Servidores integrados | Viene con servidores de aplicaciones preconstruidos Tomcat, Jetty y Undertow que no requieren instalación adicional para su uso. Esto también proporciona implementaciones más rápidas y eficientes que dan como resultado tiempos de reinicio más cortos.|
 | Autoconfigurable Drive | Spring y otros frameworks de terceros se configurarán automáticamente. |
 | Funciones similares a las de producción | Health checks, métricas y configuraciones externalizadas.|
-| Dependencias Iniciales | Esto proporcionará dependencias obstinadas diseñadas para simplificar la configuración de compilación. Esto también proporciona una flexibilidad completa de la herramienta de construcción (Maven y Gradle).|
-
+| Dependencias Iniciales | Esto proporcionará dependencias obstinadas diseñadas para simplificar la configuración de compilación. Esto también proporciona una flexibilidad completa de la herramienta de construcción (Maven y Gradle).|	
 	
-	
-	
-	
-¿Cómo funciona Spring Boot?
+## ¿Cómo funciona Spring Boot?
 Algunos pueden preguntarse cómo Spring Boot tiene configuraciones automáticas y qué significa eso realmente. Realmente se reduce a tres simples anotaciones de Spring Boot que brindan esta función:
 
+```sh
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan
+```
 Entre cada una de estas anotaciones, Spring Boot puede proporcionar dependencias de proyectos predeterminadas y permitir que se sobrescriban los valores predeterminados.
 
+```sh
 @SpringBootApplication
 @SpringBootApplication se usa en el punto de entrada de la aplicación, agregue la clase en la que reside debe tener el método principal de la aplicación. La anotación es necesaria y proporcionará cada una de las otras dos anotaciones a su aplicación Spring Boot, ya que @SpringBootApplication incluye ambas en su interior.
-
+```
+```sh
 @EnableAutoConfiguration
+```
 @EnableAutoConfiguration hace solo que proporciona a cada una de las clases representativas la capacidad de configuración automática.
 
 @ComponentScan
