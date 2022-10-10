@@ -84,13 +84,13 @@ Es un patrón de diseño que rompe las dependencias entre objetos y en su lugar 
 [Fuente](https://medium.com/@nirmalkumar8273/inversion-of-control-and-dependency-injection-in-spring-framework-e8e40b9afd8d)
 
 
-En los siguientes video se explica de forma mas detallada el concepto:
+En los siguientes videos se explica de forma mas detallada el concepto:
 
-Video 1:
+**Video 1:**
 
 [![Alt text](https://img.youtube.com/vi/dAAB2EqMiC4/0.jpg)](https://www.youtube.com/watch?v=dAAB2EqMiC4)
 
-Video 2:
+**Video 2:**
 
 [![Alt text](https://img.youtube.com/vi/MdIlvJDCsk8/0.jpg)](https://www.youtube.com/watch?v=MdIlvJDCsk8)
 
