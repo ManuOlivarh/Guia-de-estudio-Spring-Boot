@@ -82,8 +82,6 @@ La inversión de control es un principio de programación que significa ceder el
 
 Es un patrón de diseño que rompe las dependencias entre objetos y en su lugar depende de abstracciones. La inversión de control se puede lograr a través de la inyección de dependencia, una técnica para separar los componentes de software de las preocupaciones o responsabilidades.
 
-
-
 ## Inyección de dependencia
 La inyección de dependencia es un subtipo de inversión de control y se implementa mediante inyección de constructor, inyección de setter o inyección de método y se ocupa de cómo los componentes obtienen sus dependencias.
 
@@ -99,3 +97,6 @@ Inyección Setter: esto se logra mediante el contenedor que llama a los métodos
 La inyección de dependencia proporciona los objetos que necesita un objeto. Entonces, en lugar de que las dependencias se construyan por sí mismas, se inyectan por algún medio externo. Por ejemplo, tenemos una clase llamada "Cliente" que usa una clase "Registrador" para registrar errores. Entonces, en lugar de crear el "Registrador" desde dentro de la clase, podemos inyectar el mismo a través de un constructor como se muestra a continuación.
 
 El mayor beneficio logrado por este enfoque es el "desacoplamiento". Podemos invocar el objeto del cliente y pasar cualquier tipo de objeto "Registrador".
+
+[Fuente](https://medium.com/@nirmalkumar8273/inversion-of-control-and-dependency-injection-in-spring-framework-e8e40b9afd8d)
+
