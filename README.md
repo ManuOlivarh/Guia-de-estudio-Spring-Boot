@@ -177,3 +177,208 @@ public class AppConfig{
 Una de las características principales de los beans gestionados por Spring es la gestión de dependencias. Cuando Spring crea un bean que define la dependencia de otro bean, el contenedor Spring Ioc creará ese bean primero. Se asegurará de que todas las dependencias estén en su lugar antes de crear el bean. Esta creación de gráficos de dependencia que se asegura de que los beans se creen en el orden correcto es una de las características más poderosas del contenedor Spring Ioc y también elimina la complejidad de nuestro código. A continuación, resumo el ciclo de vida del frijol bajo Spring IoC.
 
 [Fuente](https://www.javadevjournal.com/spring/what-is-a-spring-bean/)
+
+
+## Ciclo de vida de un Bean en Spring
+
+Spring Context también es responsable de las dependencias de inyección en el bean, ya sea a través de métodos setter o constructor o mediante el cableado automático de Spring . A veces queremos inicializar recursos en las clases de bean, por ejemplo, creando conexiones de base de datos o validando servicios de terceros en el momento de la inicialización antes de cualquier solicitud del cliente. Spring Framework proporciona diferentes formas a través de las cuales podemos proporcionar métodos posteriores a la inicialización y previos a la destrucción en un ciclo de vida de Spring Bean.
+
+Mediante la implementación de las interfaces InitializingBean y AvailableBean : ambas interfaces declaran un método único en el que podemos inicializar/cerrar recursos en el bean. Para la posinicialización, podemos implementar InitializingBeanla interfaz y proporcionar la implementación del afterPropertiesSet()método. Para la destrucción previa, podemos implementar DisposableBeanla interfaz y proporcionar la implementación del destroy()método. Estos métodos son los métodos de devolución de llamada y similares a las implementaciones de escucha de servlet. Este enfoque es fácil de usar, pero no se recomienda porque creará un acoplamiento estrecho con el marco Spring en nuestras implementaciones de beans.
+Proporcionar valores de atributo init-method y destroy-method para el bean en el archivo de configuración del bean Spring. Este es el enfoque recomendado debido a que no depende directamente de Spring Framework y podemos crear nuestros propios métodos.
+Tenga en cuenta que los métodos post-init y pre-destroy no deben tener argumentos, pero pueden generar excepciones. También necesitaríamos obtener la instancia del bean del contexto de la aplicación Spring para la invocación de estos métodos.
+
+Ciclo de vida de Spring Bean - @PostConstruct , @PreDestroy Anotaciones
+Spring Framework también admite anotaciones @PostConstructpara @PreDestroydefinir métodos post-init y pre-destroy. Estas anotaciones son parte del javax.annotationpaquete. Sin embargo, para que estas anotaciones funcionen, debemos configurar nuestra aplicación Spring para buscar anotaciones. Podemos hacer esto definiendo bean de tipo org.springframework.context.annotation.CommonAnnotationBeanPostProcessoro por context:annotation-configelemento en el archivo de configuración de Spring Bean. Escribamos una aplicación Spring simple para mostrar el uso de las configuraciones anteriores para la gestión del ciclo de vida de Spring Bean. Cree un proyecto Spring Maven en Spring Tool Suite, el proyecto final se verá como la imagen de abajo.métodos de ejemplo de ciclo de vida de frijol primavera
+
+Ciclo de vida de Spring Bean - Dependencias de Maven
+No necesitamos incluir dependencias adicionales para configurar los métodos del ciclo de vida de Spring Bean, nuestro archivo pom.xml es como cualquier otro proyecto Spring Maven estándar.
+
+
+```sh
+<project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.springframework.samples</groupId>
+  <artifactId>SpringBeanLifeCycle</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+
+		<!-- Generic properties -->
+		<java.version>1.7</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Spring -->
+		<spring-framework.version>4.0.2.RELEASE</spring-framework.version>
+
+		<!-- Logging -->
+		<logback.version>1.0.13</logback.version>
+		<slf4j.version>1.7.5</slf4j.version>
+
+	</properties>
+	
+	<dependencies>
+		<!-- Spring and Transactions -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<!-- Logging with SLF4J & LogBack -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+	</dependencies>	
+</project>
+
+```
+
+
+## Ciclo de vida de Spring Bean - Model Class
+Vamos a crear una clase de bean Java simple que se usará en las clases de servicio.
+
+```sh
+package com.journaldev.spring.bean;
+
+public class Employee {
+
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+}
+```
+
+## Ciclo de vida de Spring Bean - InitializingBean, AvailableBean
+Vamos a crear una clase de servicio en la que implementaremos las interfaces para los métodos post-init y pre-destroy.
+
+```sh
+package com.journaldev.spring.service;
+
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+import com.journaldev.spring.bean.Employee;
+
+public class EmployeeService implements InitializingBean, DisposableBean{
+
+	private Employee employee;
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
+	public EmployeeService(){
+		System.out.println("EmployeeService no-args constructor called");
+	}
+
+	@Override
+	public void destroy() throws Exception {
+		System.out.println("EmployeeService Closing resources");
+	}
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("EmployeeService initializing to dummy value");
+		if(employee.getName() == null){
+			employee.setName("Pankaj");
+		}
+	}
+}
+```
+
+## Ciclo de vida de Spring Bean: Custom post-init, pre-destroy
+Dado que no queremos que nuestros servicios tengan una dependencia directa de Spring Framework, creemos otra forma de clase de servicio de empleado en la que tendremos métodos de ciclo de vida de Spring post-init y pre-destroy y los configuraremos en el archivo de configuración Spring Bean.
+
+```sh
+package com.journaldev.spring.service;
+
+import com.journaldev.spring.bean.Employee;
+
+public class MyEmployeeService{
+
+	private Employee employee;
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
+	public MyEmployeeService(){
+		System.out.println("MyEmployeeService no-args constructor called");
+	}
+
+	//pre-destroy method
+	public void destroy() throws Exception {
+		System.out.println("MyEmployeeService Closing resources");
+	}
+
+	//post-init method
+	public void init() throws Exception {
+		System.out.println("MyEmployeeService initializing to dummy value");
+		if(employee.getName() == null){
+			employee.setName("Pankaj");
+		}
+	}
+}
+
+```
+
+Veremos el archivo de configuración de Spring Bean en un momento. Antes de eso, creemos otra clase de servicio que usará las anotaciones @PostConstruct y @PreDestroy .
+
+## Ciclo de vida de Spring Bean - @PostConstruct , @PreDestroy
+
+A continuación se muestra una clase simple que se configurará como Spring Bean y para los métodos post-init y pre-destroy, estamos usando las anotaciones @PostConstruct y @PreDestroy .
+
+```sh
+package com.journaldev.spring.service;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+public class MyService {
+
+	@PostConstruct
+	public void init(){
+		System.out.println("MyService init method called");
+	}
+	
+	public MyService(){
+		System.out.println("MyService no-args constructor called");
+	}
+	
+	@PreDestroy
+	public void destory(){
+		System.out.println("MyService destroy method called");
+	}
+}
+```
