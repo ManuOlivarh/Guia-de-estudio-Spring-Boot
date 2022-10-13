@@ -118,3 +118,41 @@ El mayor beneficio logrado por este enfoque es el "desacoplamiento". Podemos inv
 
 [Fuente](https://medium.com/@nirmalkumar8273/inversion-of-control-and-dependency-injection-in-spring-framework-e8e40b9afd8d)
 
+## Que es un Bean?
+
+Spring Bean es el concepto clave o la columna vertebral de Spring Framework. Spring Bean es el objeto cuyo ciclo de vida es administrado por Spring IoC. Es importante entenderlo antes de trabajar con Spring Framework. En palabras simples, Spring Bean es el bloque de construcción central para cualquier aplicación Spring
+
+En Spring, los objetos que forman la columna vertebral de su aplicación y que son administrados por el contenedor Spring IoC se denominan beans. Un bean es un objeto que es instanciado, ensamblado y administrado por un contenedor Spring IoC. De lo contrario, un bean es uno de los muchos objetos de su aplicación. Los beans y las dependencias entre ellos se reflejan en los metadatos de configuración utilizados por un contenedor.
+
+El concepto más importante al trabajar en los beans es el contenedor IoC. El contenedor Spring IoC es el sistema de gestión central de Spring Framework. Es responsable de crear, configurar y administrar el ciclo de vida de estos objetos. El contenedor obtiene sus instrucciones sobre qué objetos instanciar, configurar y ensamblar al leer los metadatos de configuración proporcionados en forma de configuraciones XML o anotaciones. Le permite expresar los objetos que componen su aplicación y las ricas interdependencias entre dichos objetos. Veamos el flujo de trabajo de alto nivel del contenedor Spring Ioc.
+
+
+![alt text](https://prod-acb5.kxcdn.com/wp-content/uploads/2017/11/Spring-IoC-container.png.webp)
+Para una mejor comprensión, tomemos el siguiente ejemplo:
+
+El Cliente(Customer) de nuestra tienda online.
+Los Pedidos(Orders) realizados por Clientes en nuestra tienda online.
+Una clase de dominio típica se verá así:
+
+```sh
+@Component
+public class Customer{
+    private String firstName;
+    private String lastName;
+    private List orders;
+  
+    //getter and setter
+}
+
+@Component
+public class Order{
+    private String code;
+    private double total;
+    private double tax;
+    private Product product;
+    private Customer owner;
+
+    //getter and setter
+}
+```
+[Fuente](https://www.javadevjournal.com/spring/what-is-a-spring-bean/)
