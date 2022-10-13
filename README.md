@@ -128,6 +128,9 @@ El concepto más importante al trabajar en los beans es el contenedor IoC. El co
 
 
 ![alt text](https://prod-acb5.kxcdn.com/wp-content/uploads/2017/11/Spring-IoC-container.png.webp)
+
+
+
 Para una mejor comprensión, tomemos el siguiente ejemplo:
 
 El Cliente(Customer) de nuestra tienda online.
@@ -155,4 +158,22 @@ public class Order{
     //getter and setter
 }
 ```
+
+Aquí está nuestra clase de configuración:
+
+```sh
+@Configuration
+@ComponentScan(basePackages = { "com.javadevjournal"})
+public class AppConfig{
+   
+    @Bean
+    public Customer getCustomer() {
+        return new Customer();
+    }
+}
+```
+## Bean Dependencies
+
+Una de las características principales de los beans gestionados por Spring es la gestión de dependencias. Cuando Spring crea un bean que define la dependencia de otro bean, el contenedor Spring Ioc creará ese bean primero. Se asegurará de que todas las dependencias estén en su lugar antes de crear el bean. Esta creación de gráficos de dependencia que se asegura de que los beans se creen en el orden correcto es una de las características más poderosas del contenedor Spring Ioc y también elimina la complejidad de nuestro código. A continuación, resumo el ciclo de vida del frijol bajo Spring IoC.
+
 [Fuente](https://www.javadevjournal.com/spring/what-is-a-spring-bean/)
